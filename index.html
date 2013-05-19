@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width; initial-scale=1; maximum-scale=1" name="viewport">
+
+  <title>JQuery Populaty</title>
+
+  <meta content="Washington Botelho" name="author">
+  <meta content="jQuery Populaty - A Form Populator" name="description">
+  <meta content="jquery,plugin,form,formulario,field,fill,filler,populator,popular,populacao,populaty" name="keywords">
+
+  <link type="text/css" rel="stylesheet" href="demo/css/application.css">
+
+  <script type="text/javascript" src="demo/js/jquery.min.js"></script>
+  <script type="text/javascript" src="lib/jquery.populaty.min.js"></script>
+
+  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+  <div id="wrapper">
+    <header role="banner">
+      <div id="logo">
+        <h1><a href="http://wbotelhos.com/populaty" title="jQuery Populaty">jQuery Populaty</a></h1>
+        <p>A Form Populator</p>
+      </div>
+
+      <nav role="navigation">
+        <ul>
+          <li><a href="http://github.com/wbotelhos/populaty/archive/0.1.0.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v0.1.0</a></li>
+          <li><a href="http://github.com/wbotelhos/populaty" title="Github" target="_blank"><i class="icon-github icon-large"></i>Github</a></li>
+          <li><a href="http://wbotelhos.com/labs" title="yLab" target="_blank"><i class="icon-beaker icon-large"></i>yLab</a></li>
+          <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Populaty" title="Donate" target="_blank"><i class="icon-heart-empty icon-large"></i>Donate</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="container">
+      <section role="main">
+        <article>
+          <h2 id="default">
+            <a href="#default">Default:</a>
+          </h2>
+
+          <p>
+            jQuery Populaty abstract the name annotation used with dot <code>article.title</code> like <a href="http://vraptor.org">VRaptor</a> works or brackets <code>article[title]</code> like <a href="http://rubyonrails.org/">Rails</a> does.<br />
+            The fields <code>select multiple</code> and <code>checkbox</code> can receive an array with objects <code>[{ 'id': 1 }, { 'id': 2 }]</code> or just the raw values <code>[1, 2]</code>.<br />
+            If you wonder about arrays without index like <code>article.categories[].id</code> (VRaptor) or <code>article[category_ids][]</code> (Rails), yes, it works too! (:
+          </p>
+
+          <blockquote>The population is based on fields within the form, thus avoiding waste of resource searches across all JSON loaded.</blockquote>
+
+          <div class="demo">
+            <form id="default-demo">
+              <label for="default-input">Text</label>
+              <input id="default-input" type="text" name="title" />
+
+              <label for="default-select">Select</label>
+              <select id="default-select" name="article.category.id">
+                <option></option>
+                <option value="1">jQuery Capty</option>
+                <option value="2">jQuery Chrony</option>
+              </select>
+
+              <div class="checkables">
+                <div class="item">
+                  <input id="default-checkbox-1" type="checkbox" name="article[category_ids][]" value="1" />
+                  <label for="default-checkbox-1">jQuery Modaly</label>
+                </div>
+
+                <div class="item">
+                  <input id="default-checkbox-2" type="checkbox" name="article[category_ids][]" value="2" />
+                  <label for="default-checkbox-2">jQuery Mory</label>
+                </div>
+
+                <div class="item">
+                  <input id="default-checkbox-3" type="checkbox" name="article[category_ids][]" value="3" />
+                  <label for="default-checkbox-3">jQuery Stepy</label>
+                </div>
+              </div>
+
+              <label for="default-multiple">Select Multiple</label>
+              <select id="default-multiple" name="article.categories[].id" multiple="true">
+                <option value="flapy">jQuery Flapy</option>
+                <option value="flury">jQuery Flury</option>
+                <option value="gridy">jQuery Gridy</option>
+              </select>
+
+              <div class="checkables">
+                <div class="item">
+                  <input id="default-radio-1" type="radio" name="article.parent.id" value="1" />
+                  <label for="default-radio-1">jQuery Style</label>
+                </div>
+
+                <div class="item">
+                  <input id="default-radio-2" type="radio" name="article.parent.id" value="2" />
+                  <label for="default-radio-2">jQuery Taby</label>
+                </div>
+
+                <div class="item">
+                  <input id="default-radio-3" type="radio" name="article.parent.id" value="3" />
+                  <label for="default-radio-3">jQuery Treefy</label>
+                </div>
+              </div>
+
+              <label for="default-textarea">Textarea</label>
+              <textarea id="default-textarea" name="article[comment]"></textarea>
+
+              <input type="button" value="Populate" class="button gray" />
+              <input type="reset" value="Reset" class="button gray" />
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"title"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"article.category.id"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option&gt;&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>jQuery Capty<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>jQuery Chrony<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"article[category_ids][]"</span> <span class="na">value=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"article[category_ids][]"</span> <span class="na">value=</span><span class="s">"2"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"article[category_ids][]"</span> <span class="na">value=</span><span class="s">"3"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"article.categories[].id"</span> <span class="na">multiple=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"flapy"</span><span class="nt">&gt;</span>jQuery Flapy<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"flury"</span><span class="nt">&gt;</span>jQuery Flury<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"gridy"</span><span class="nt">&gt;</span>jQuery Gridy<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"article.parent.id"</span> <span class="na">value=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"article.parent.id"</span> <span class="na">value=</span><span class="s">"2"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"article.parent.id"</span> <span class="na">value=</span><span class="s">"3"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">"article[comment]"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'title'</span>  <span class="o">:</span> <span class="s1">'jQuery Raty'</span><span class="p">,</span>
+  <span class="s1">'article'</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">'categories'</span>  <span class="o">:</span> <span class="p">[{</span> <span class="s1">'id'</span><span class="o">:</span> <span class="s1">'flapy'</span> <span class="p">},</span> <span class="p">{</span> <span class="s1">'id'</span><span class="o">:</span> <span class="s1">'gridy'</span> <span class="p">}],</span>
+    <span class="s1">'category'</span>    <span class="o">:</span> <span class="p">{</span> <span class="s1">'id'</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span>
+    <span class="s1">'category_ids'</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s1">'comment'</span>     <span class="o">:</span> <span class="s1">'http://wbotelhos.com/labs'</span><span class="p">,</span>
+    <span class="s1">'parent'</span>      <span class="o">:</span> <span class="p">{</span> <span class="s1">'id'</span><span class="o">:</span> <span class="mi">2</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">populaty</span><span class="p">({</span> <span class="nx">json</span><span class="o">:</span> <span class="nx">json</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="reset">
+            <a href="#reset">Reset:</a>
+          </h2>
+
+          <p>
+            <button id="type">Type</button> something on textarea and then trigger the button Populate.<br />
+            The value will not be removed because the <code>reset</code> options was disabled.<br />
+            The value will not be replaced too, because nothing came on JSON for this field.
+          </p>
+
+          <div class="demo">
+            <form id="reset-demo">
+              <label for="reset-input">Title</label>
+              <input id="reset-input" type="text" name="title" />
+
+              <label for="reset-textarea">Comment</label>
+              <textarea id="reset-textarea" name="comment"></textarea>
+
+              <input type="button" value="Populate" class="button gray" />
+              <input type="reset" value="Reset" class="button gray" />
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">populaty</span><span class="p">({</span>
+  <span class="nx">json</span> <span class="o">:</span> <span class="p">{</span> <span class="s1">'title'</span><span class="o">:</span> <span class="s1">'jQuery Raty'</span> <span class="p">},</span>
+  <span class="nx">reset</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="json">
+            <a href="#json">JSON:</a>
+          </h2>
+
+          <p>
+            The JSON used to populate the fields.<br />
+            If you set a default JSON for this options, it will be merged with your received JSON.
+          </p>
+
+          <div class="demo">
+            <form id="json-demo">
+              <label for="json-input">Title</label>
+              <input id="json-input" type="text" name="title" />
+
+              <label for="json-textarea">Version</label>
+              <textarea id="json-textarea" name="version"></textarea>
+
+              <input type="button" value="Populate" class="button gray" />
+              <input type="reset" value="Reset" class="button gray" />
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">populaty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">version</span><span class="o">:</span> <span class="s1">'0.1.0'</span> <span class="p">};</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">populaty</span><span class="p">({</span> <span class="nx">json</span> <span class="o">:</span> <span class="p">{</span> <span class="s1">'title'</span><span class="o">:</span> <span class="s1">'jQuery Raty'</span> <span class="p">}</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="include">
+            <a href="#include">Include:</a>
+          </h2>
+
+          <p>
+            Fields that will be handled to be populated.<br />
+            Check the option <a href="#exclude">exclude</a> to check the fields that will be excluded from this option.<br />
+            Here we will include just the <code>textarea</code> type, then the <code>text</code> will be ignored.
+          </p>
+
+          <div class="demo">
+            <form id="include-demo">
+              <label for="include-input">Text</label>
+              <input id="include-input" type="text" name="text" />
+
+              <label for="include-textarea">Textarea</label>
+              <textarea id="include-textarea" name="textarea"></textarea>
+
+              <input type="button" value="Populate" class="button gray" />
+              <input type="reset" value="Reset" class="button gray" />
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">populaty</span><span class="p">({</span>
+  <span class="nx">json</span>   <span class="o">:</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'jQuery Raty'</span><span class="p">,</span> <span class="nx">textarea</span><span class="o">:</span> <span class="s1">'jQuery Gridy'</span> <span class="p">},</span>
+  <span class="nx">include</span><span class="o">:</span> <span class="s1">'textarea'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="exclude">
+            <a href="#exclude">Exclude:</a>
+          </h2>
+
+          <p>
+            This option will exclude elements included on option <a href="#include">include</a>.<br />
+            He we do the inverse logic used on include options, we exclude the <code>textarea</code> type.
+          </p>
+
+          <div class="demo">
+            <form id="exclude-demo">
+              <label for="exclude-input">Text</label>
+              <input id="exclude-input" type="text" name="text" />
+
+              <label for="exclude-textarea">Textarea</label>
+              <textarea id="exclude-textarea" name="textarea"></textarea>
+
+              <input type="button" value="Populate" class="button gray" />
+              <input type="reset" value="Reset" class="button gray" />
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">populaty</span><span class="p">({</span>
+  <span class="nx">json</span>   <span class="o">:</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'jQuery Raty'</span><span class="p">,</span> <span class="nx">textarea</span><span class="o">:</span> <span class="s1">'jQuery Gridy'</span> <span class="p">},</span>
+  <span class="nx">exclude</span><span class="o">:</span> <span class="s1">'textarea'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="typeful">
+            <a href="#typeful">Typeful:</a>
+          </h2>
+
+          <p>
+            Typeful is the fields where we type text inside it, different of a <code>select</code> element.<br />
+            Here we tell the fields that will use the type strategy to be populated.
+          </p>
+
+          <div class="demo">
+            <form id="typeful-demo">
+              <label for="typeful-input">Text</label>
+              <input id="typeful-input" type="text" name="text_name" />
+
+              <label for="exclude-textarea">Textarea</label>
+              <textarea id="exclude-textarea" name="textareaName"></textarea>
+
+              <input type="button" value="Populate" class="button gray" />
+              <input type="reset" value="Reset" class="button gray" />
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"text_name"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"score"</span> <span class="na">name=</span><span class="s">"textareaName"</span> <span class="nt">/&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">populaty</span><span class="p">({</span>
+  <span class="nx">json</span>   <span class="o">:</span> <span class="p">{</span> <span class="nx">text_name</span><span class="o">:</span> <span class="s1">'text type as not applied for'</span><span class="p">,</span> <span class="nx">textareaName</span><span class="o">:</span> <span class="s1">'textarea was applied for and matched'</span> <span class="p">},</span>
+  <span class="nx">typeful</span><span class="o">:</span> <span class="p">[</span><span class="s1">'textarea'</span><span class="p">]</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="selectable">
+            <a href="#selectable">Selectable:</a>
+          </h2>
+
+          <p>
+            Like <a href="#typeful">typeful</a>, here we tell the selectables fields.
+          </p>
+
+          <div class="demo">
+            <form id="selectable-demo">
+              <label for="selectable-select">Select</label>
+              <select id="selectable-select" name="select">
+                <option></option>
+                <option value="1">jQuery Capty</option>
+                <option value="2">jQuery Chrony</option>
+              </select>
+
+              <label for="selectable-multiple">Select Multiple</label>
+              <select id="selectable-multiple" name="multiple" multiple="true">
+                <option value="1">jQuery Flapy</option>
+                <option value="2">jQuery Flury</option>
+                <option value="3">jQuery Gridy</option>
+              </select>
+
+              <input type="button" value="Populate" class="button gray" />
+              <input type="reset" value="Reset" class="button gray" />
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"select"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option&gt;&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>jQuery Capty<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>jQuery Chrony<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"multiple"</span> <span class="na">multiple=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>jQuery Flapy<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>jQuery Flury<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>jQuery Gridy<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">populaty</span><span class="p">({</span>
+  <span class="nx">json</span>      <span class="o">:</span> <span class="p">{</span> <span class="nx">select</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">multiple</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span>
+  <span class="nx">selectable</span><span class="o">:</span> <span class="p">[</span><span class="s1">'select-one'</span><span class="p">]</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="checkable">
+            <a href="#checkable">Checkable:</a>
+          </h2>
+
+          <p>
+            Like <a href="#typeful">typeful</a>, we have the checkable inputs too.
+          </p>
+
+          <div class="demo">
+            <form id="checkable-demo">
+              <div class="checkables">
+                <div class="item">
+                  <input id="checkable-radio-2" type="radio" name="radio" value="1" />
+                  <label for="checkable-radio-2">jQuery Taby</label>
+                </div>
+
+                <div class="item">
+                  <input id="checkable-radio-3" type="radio" name="radio" value="2" />
+                  <label for="checkable-radio-3">jQuery Treefy</label>
+                </div>
+              </div>
+
+              <div class="checkables">
+                <div class="item">
+                  <input id="checkable-checkbox-3" type="checkbox" name="checkbox" value="1" />
+                  <label for="checkable-checkbox-3">jQuery Stepy</label>
+                </div>
+              </div>
+
+              <input type="button" value="Populate" class="button gray" />
+              <input type="reset" value="Reset" class="button gray" />
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"radio"</span> <span class="na">value=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"radio"</span> <span class="na">value=</span><span class="s">"2"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">populaty</span><span class="p">({</span>
+  <span class="nx">json</span>     <span class="o">:</span> <span class="p">{</span> <span class="nx">checkbox</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">radio</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span>
+  <span class="nx">checkable</span><span class="o">:</span> <span class="p">[</span><span class="s1">'radio'</span><span class="p">]</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="options">
+            <a href="#options">Options:</a>
+          </h2>
+
+          <div id="checkable" class="option">
+            <div>checkable <span>['checkbox', 'radio']</span></div>
+            <p>The checkable fields. This fields will be checked with <code>checked="checked"</code></p>
+          </div>
+
+          <div id="exclude" class="option">
+            <div>exclude <span>':submit, :reset, :button'</span></div>
+            <p>Field to be excluded from includeds.</p>
+          </div>
+
+          <div id="include" class="option">
+            <div>include <span>':input'</span></div>
+            <p>Fields to be included on population.</p>
+          </div>
+
+          <div id="json" class="option">
+            <div>json <span>undefined</span></div>
+            <p>JSON data to populate the fields. You can to use as String or Object.</p>
+          </div>
+
+          <div id="reset" class="option">
+            <div>reset <span>true</span></div>
+            <p>Reset or not the form before populate.</p>
+          </div>
+
+          <div id="typeful" class="option">
+            <div>selectable <span>['select-one', 'select-multiple']</span></div>
+            <p>The selectable fields. This fields will be selected with <code>selected="selected"</code></p>
+          </div>
+
+          <div id="typeful" class="option">
+            <div>typeful <span>['text', 'textarea']</span></div>
+            <p>The typeful fields.</p>
+          </div>
+
+          <h2 id="tests">
+            <a href="#tests">Tests:</a>
+          </h2>
+
+          <p>
+            This plugin is tested to work better.
+            <a href="http://wbotelhos.com/populaty/spec/run.html" target="_blank">Check it out!</a>
+          </p>
+
+        </article>
+      </section>
+
+      <div class="author">
+        <img title="Washington Botelho" src="http://www.gravatar.com/avatar/00c9b483d3c58a12c5f256cf2770d0b8?d=mm" alt="">
+        <div class="biography">
+          <p>
+            Ruby, Java and Python Developer in <a href="http://r7.com" title="R7.com" target="_blank">R7.com</a> Portal.<br />
+            Bachelor's in Information Systems and certified OCJA 1.0 and OCJP 6.<br />
+            Helper and learner of the open source community, and designer adventurer.<br />
+            Also has a passion for dance, skate, jiu-jitsu and Counter Strike Source. (:
+          </p>
+        </div>
+
+        <div class="social">
+          <a href="http://github.com/wbotelhos" title="http://github.com/wbotelhos" target="_blank" class="github"></a>
+          <a href="http://linkedin.com/in/wbotelhos" title="http://linkedin.com/in/wbotelhos" target="_blank" class="linkedin"></a>
+          <a href="http://twitter.com/wbotelhos" title="http://twitter.com/wbotelhos" target="_blank" class="twitter"></a>
+          <a href="http://facebook.com/wbotelhos" title="http://facebook.com/wbotelhos" target="_blank" class="facebook"></a>
+        </div>
+      </div>
+    </div>
+
+    <footer role="contentinfo">
+      &copy; 2013 <a href="http://wbotelhos.com" title="wbotelhos.com">wbotelhos.com</a>
+    </footer>
+  </div>
+
+  <script type="text/javascript">
+     var json = {
+      'title'  : 'jQuery Raty',
+      'article': {
+        'categories'  : [{ 'id': 'flapy' }, { 'id': 'gridy' }],
+        'category'    : { 'id': 1 },
+        'category_ids': [1, 2, 3],
+        'comment'     : 'http://wbotelhos.com/labs',
+        'parent'      : { 'id': 2 }
+      }
+    };
+
+    $(function() {
+      $('#default-demo').children(':button').on('click', function() {
+        $(this).closest('form').populaty({ json: json });
+      });
+
+      $('#type').on('click', function() {
+        $('#reset-demo').children('textarea').focus();
+      });
+
+      $('#reset-demo').children(':button').on('click', function() {
+        $(this).closest('form').populaty({
+          json : { 'title': 'jQuery Raty' },
+          reset: false
+        });
+      });
+
+      $('#json-demo').children(':button').on('click', function() {
+        $.fn.populaty.defaults.json = { version: '0.1.0' };
+
+        $(this).closest('form').populaty({ json : { 'title': 'jQuery Raty' } });
+
+        $.fn.populaty.defaults.json = undefined;
+      });
+
+      $('#include-demo').children(':button').on('click', function() {
+        $(this).closest('form').populaty({
+          json   : { text: 'jQuery Raty', textarea: 'jQuery Gridy' },
+          include: 'textarea'
+        });
+      });
+
+      $('#exclude-demo').children(':button').on('click', function() {
+        $(this).closest('form').populaty({
+          json   : { text: 'jQuery Raty', textarea: 'jQuery Gridy' },
+          exclude: 'textarea'
+        });
+      });
+
+      $('#typeful-demo').children(':button').on('click', function() {
+        $(this).closest('form').populaty({
+          json   : { text_name: 'text type as not applied for', textareaName: 'textarea was applied for and matched' },
+          typeful: ['textarea']
+        });
+      });
+
+      $('#selectable-demo').children(':button').on('click', function() {
+        $(this).closest('form').populaty({
+          json      : { select: 1, multiple: 1 },
+          selectable: ['select-one']
+        });
+      });
+
+      $('#checkable-demo').children(':button').on('click', function() {
+        $(this).closest('form').populaty({
+          json     : { checkbox: 1, radio: 1 },
+          checkable: ['radio']
+        });
+      });
+    });
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-719499234-18', 'wbotelhos.com');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
