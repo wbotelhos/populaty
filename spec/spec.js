@@ -40,6 +40,16 @@ describe('Populaty', function() {
         Fixtury.clear();
       });
     });
+
+    context('on checkbox', function() {
+      context('as boolean', function() {
+        it ('is checked', function() {
+          var form = checkbox(Fixtury.checkbox({ name: 'name', value: true }), '{ "name": true }');
+
+          expect(form.children(':checkbox')).toBeChecked();
+        });
+      });
+    });
   });
 
   describe('checkbox', function() {
