@@ -1,5 +1,11 @@
 # jQuery Populaty - A Form Populator - http://wbotelhos.com/populaty
 
+## 0.1.1
+
+### Fixes
+
++ When the value from json is boolean the value doesn't match with field's value.
+
 ## 0.1.0
 
 ### News
