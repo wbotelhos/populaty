@@ -5,7 +5,7 @@ jQuery Populaty is a plugin to populate form from a JSON.
 ## Version
 
 ```
-@version        0.1.0
+@version        0.1.1
 @since          2013-05-08
 @author         Washington Botelho
 @documentation  wbotelhos.com/populaty
