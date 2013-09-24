@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width; initial-scale=1; maximum-scale=1" name="viewport">
+  <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
 
   <title>JQuery Populaty</title>
 
@@ -29,7 +29,7 @@
 
       <nav role="navigation">
         <ul>
-          <li><a href="http://github.com/wbotelhos/populaty/archive/0.1.1.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v0.1.1</a></li>
+          <li><a href="http://github.com/wbotelhos/populaty/archive/0.1.2.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v0.1.2</a></li>
           <li><a href="http://github.com/wbotelhos/populaty" title="Github" target="_blank"><i class="icon-github icon-large"></i>Github</a></li>
           <li><a href="http://wbotelhos.com/labs" title="yLab" target="_blank"><i class="icon-beaker icon-large"></i>yLab</a></li>
           <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Populaty" title="Donate" target="_blank"><i class="icon-heart-empty icon-large"></i>Donate</a></li>
@@ -218,7 +218,7 @@
 
 <div class="highlight">
 <pre>
-<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">populaty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">version</span><span class="o">:</span> <span class="s1">'0.1.1'</span> <span class="p">};</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">populaty</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">version</span><span class="o">:</span> <span class="s1">'0.1.2'</span> <span class="p">};</span>
 </pre>
 </div>
 
@@ -302,11 +302,53 @@
 
           <div class="demo">
             <form id="typeful-demo">
+              <label for="typeful-color">Color</label>
+              <input id="typeful-color" type="color" name="text_color" />
+
+              <label for="typeful-date">Date</label>
+              <input id="typeful-date" type="date" name="text_date" />
+
+              <label for="typeful-datetime">Datetime</label>
+              <input id="typeful-datetime" type="datetime" name="text_datetime" />
+
+              <label for="typeful-datetime-local">Datetime-local</label>
+              <input id="typeful-datetime-local" type="datetime-local" name="text_datetime-local" />
+
+              <label for="typeful-email">E-mail</label>
+              <input id="typeful-email" type="email" name="text_email" />
+
+              <label for="typeful-month">Month</label>
+              <input id="typeful-month" type="month" name="text_month" />
+
+              <label for="typeful-number">Number</label>
+              <input id="typeful-number" type="number" name="text_number" />
+
+              <label for="typeful-range">Range</label>
+              <input id="typeful-range" type="range" name="text_range" />
+
+              <label for="typeful-search">Search</label>
+              <input id="typeful-search" type="search" name="text_search" />
+
+              <label for="typeful-tel">Tel</label>
+              <input id="typeful-tel" type="tel" name="text_tel" />
+
               <label for="typeful-input">Text</label>
               <input id="typeful-input" type="text" name="text_name" />
 
               <label for="exclude-textarea">Textarea</label>
               <textarea id="exclude-textarea" name="textareaName"></textarea>
+
+              <label for="typeful-time">Time</label>
+              <input id="typeful-time" type="time" name="text_time" />
+
+              <label for="typeful-url">Url</label>
+              <input id="typeful-url" type="url" name="text_url" />
+
+              <label for="typeful-week">Week</label>
+              <input id="typeful-week" type="week" name="text_week" />
+
+              <label for="typeful-hidden">Hidden</label><br />
+              <input id="typeful-hidden" type="hidden" name="text_hidden" />
 
               <input type="button" value="Populate" class="button gray" />
               <input type="reset" value="Reset" class="button gray" />
@@ -470,7 +512,7 @@
           </div>
 
           <div id="typeful" class="option">
-            <div>typeful <span>['text', 'textarea']</span></div>
+            <div>typeful <span>['color', 'date', 'datetime', 'datetime-local', 'email', 'hidden', 'month', 'number', 'range', 'search', 'tel', 'text', 'textarea', 'time', 'url', 'week']</span></div>
             <p>The typeful fields.</p>
           </div>
 
@@ -540,7 +582,7 @@
       });
 
       $('#json-demo').children(':button').on('click', function() {
-        $.fn.populaty.defaults.json = { version: '0.1.1' };
+        $.fn.populaty.defaults.json = { version: '0.1.2' };
 
         $(this).closest('form').populaty({ json : { 'title': 'jQuery Raty' } });
 
