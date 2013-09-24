@@ -1,5 +1,11 @@
 # jQuery Populaty - A Form Populator - http://wbotelhos.com/populaty
 
+## 0.1.2
+
+### Fixes
+
++ Added some fields types of HTML 4 and 5 to typeful option.
+
 ## 0.1.1
 
 ### Fixes
