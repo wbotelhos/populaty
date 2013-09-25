@@ -5,7 +5,7 @@ jQuery Populaty is a plugin to populate form from a JSON.
 ## Version
 
 ```
-@version        0.1.1
+@version        0.1.2
 @since          2013-05-08
 @author         Washington Botelho
 @documentation  wbotelhos.com/populaty
@@ -25,7 +25,25 @@ include    : ':input'                          // Fields to be included on popul
 json       : undefined                         // JSON data to populate the fields.
 reset      : true                              // Reset or not the form before populate.
 selectable : ['select-one', 'select-multiple'] // Selectable fields.
-typeful    : ['text', 'textarea']              // Typeful fields.
+typeful    : [                                 // Typeful fields.
+               'color',
+               'date',
+               'datetime',
+               'datetime-local',
+               'email',
+               'hidden',
+               'month',
+               'number',
+               'password',
+               'range',
+               'search',
+               'tel',
+               'text',
+               'textarea',
+               'time',
+               'url',
+               'week'
+             ]
 ```
 
 ## Usage

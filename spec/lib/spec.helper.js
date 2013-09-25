@@ -37,6 +37,14 @@ function select(name, options, json, isMultiple) {
   return form.children('select');
 };
 
+function hidden(name, json) {
+  var form = Fixtury.append(Fixtury.form({ html: Fixtury.hidden({ name: name }) }));
+
+  form.populaty({ json: json });
+
+  return form.children('input');
+};
+
 function multiple(name, options, json) {
   select(name, options, json, true);
 };

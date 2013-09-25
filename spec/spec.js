@@ -23,7 +23,7 @@ describe('Populaty', function() {
 
     context('as object', function() {
       it ('is usable', function() {
-        var field = text('name.item', { name: 1 });
+        var field = text('name', { name: 1 });
 
         expect(field).toHaveValue(1);
 
@@ -33,9 +33,19 @@ describe('Populaty', function() {
 
     context('as string', function() {
       it ('is usable', function() {
-        var field = text('name.item', "{ \"name\": \"1\" }");
+        var field = text('name', '{ "name": "1" }');
 
         expect(field).toHaveValue(1);
+
+        Fixtury.clear();
+      });
+    });
+
+    context('on hidden', function() {
+      it ('is hidden', function() {
+        var field = hidden('name', '{ "name": "value" }');
+
+        expect(field).toHaveValue('value');
 
         Fixtury.clear();
       });
@@ -257,7 +267,7 @@ describe('Populaty', function() {
       expect(opt.json).toBeUndefined();
       expect(opt.reset).toBeTruthy();
       expect(opt.selectable).toEqual(['select-one', 'select-multiple']);
-      expect(opt.typeful).toEqual(['text', 'textarea']);
+      expect(opt.typeful).toEqual(['color', 'date', 'datetime', 'datetime-local', 'email', 'hidden', 'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'textarea', 'time', 'url', 'week']);
     });
 
     describe(':exclude', function() {
